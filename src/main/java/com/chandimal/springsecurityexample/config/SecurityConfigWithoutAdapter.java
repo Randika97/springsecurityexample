@@ -46,7 +46,7 @@ public class SecurityConfigWithoutAdapter {
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
         .authorizeRequests()
-        .antMatchers("/api/hello").permitAll()
+        .antMatchers("/auth").permitAll()
         .anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
